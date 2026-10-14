@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
+import { Button } from "@/components/ui/button";
+import { UserKey } from "lucide-react";
 
 const { SITE_NAME } = process.env;
 
@@ -52,9 +54,20 @@ export async function Navbar() {
           </Suspense>
         </div>
         <div className="flex justify-end md:w-1/3">
-          <Suspense fallback={<OpenCart />}>
-            <CartModal />
-          </Suspense>
+          <div className="flex items-center gap-3">
+            {/* login */}
+            <a
+              href="#"
+              className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
+            >
+              <UserKey
+                className={`h-4 transition-all ease-in-out hover:scale-110`}
+              />
+            </a>
+            <Suspense fallback={<OpenCart />}>
+              <CartModal />
+            </Suspense>
+          </div>
         </div>
       </div>
     </nav>
