@@ -6,7 +6,7 @@ import { getMenu } from "lib/shopify";
 import { cacheLife } from "next/cache";
 import { Suspense } from "react";
 
-const { COMPANY_NAME, SITE_NAME } = process.env;
+const { NEXT_PUBLIC_COMPANY_NAME, NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export default async function Footer() {
   const currentYear = await getCurrentYear();
@@ -14,7 +14,7 @@ export default async function Footer() {
   const skeleton =
     "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
   const menu = await getMenu("next-js-frontend-footer-menu");
-  const copyrightName = COMPANY_NAME || SITE_NAME || "";
+  const copyrightName = NEXT_PUBLIC_COMPANY_NAME || NEXT_PUBLIC_SITE_NAME || "";
 
   return (
     <footer className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -25,7 +25,7 @@ export default async function Footer() {
             href="/"
           >
             <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
+            <span className="uppercase">{NEXT_PUBLIC_SITE_NAME}</span>
           </Link>
         </div>
         <Suspense

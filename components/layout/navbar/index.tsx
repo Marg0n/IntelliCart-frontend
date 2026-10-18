@@ -3,14 +3,13 @@ import OpenCart from "components/cart/open-cart";
 import LogoSquare from "components/logo-square";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
+import { UserKey } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
-import { Button } from "@/components/ui/button";
-import { UserKey } from "lucide-react";
 
-const { SITE_NAME } = process.env;
+const { NEXT_PUBLIC_SITE_NAME } = process.env;
 
 export async function Navbar() {
   const menu = await getMenu("next-js-frontend-header-menu");
@@ -30,7 +29,7 @@ export async function Navbar() {
           >
             <LogoSquare />
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
+              {NEXT_PUBLIC_SITE_NAME}
             </div>
           </Link>
           {menu.length ? (
@@ -57,7 +56,7 @@ export async function Navbar() {
           <div className="flex items-center gap-3">
             {/* login */}
             <a
-              href="#"
+              href="/login"
               className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
             >
               <UserKey
